@@ -1,0 +1,44 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"> 
+    	
+	    <ImageView android:id="@+id/cowImage"
+	        android:layout_width="48dip"
+	        android:layout_height="48dip"
+	        android:src="@drawable/cow"
+	        android:scaleType="centerCrop"
+	        android:contentDescription="@string/image_cow_description" />
+	    
+	    <TextView android:id="@+id/cowCountText"
+  	  		android:layout_width="wrap_content"
+	  		android:layout_height="wrap_content"
+	  		android:layout_weight="1" 
+	  		android:layout_gravity="left|center_vertical" 
+	  		android:textSize="20dip" 
+	  		android:layout_marginLeft="10dip"/>
+	    
+	    <ImageView android:id="@+id/bullImage"
+	        android:layout_width="48dip"
+	        android:layout_height="48dip"
+	        android:src="@drawable/bull"
+	        android:scaleType="centerCrop"
+	        android:contentDescription="@string/image_bull_descripton" />
+	    
+	    <TextView android:id="@+id/bullCountText"
+  	  		android:layout_width="wrap_content"
+	  		android:layout_height="wrap_content"
+	  		android:layout_weight="1" 
+	  		android:layout_gravity="left|center_vertical" 
+	  		android:textSize="20dip" 
+	  		android:layout_marginLeft="10dip"/>
+	    
+	    <TextView android:id="@+id/guessText"
+  	  		android:layout_width="wrap_content"
+	  		android:layout_height="wrap_content"
+	  		android:layout_weight="1" 
+	  		android:layout_gravity="left|center_vertical" 
+	  		android:textSize="20dip" 
+	  		android:layout_marginLeft="10dip"/>
+	        
+</LinearLayout>
