@@ -9,7 +9,6 @@
     <string name="menu_settings">Settings</string>
     <string name="title_activity_welcome">Cows and Bulls</string>
     <string name="title_activity_gameplay">Game Play</string>
-    <string name="title_activity_retry">Retry</string>
     <string name="image_cow_description">Image of Cow</string>
     <string name="image_bull_descripton">Image of Bull</string>
 

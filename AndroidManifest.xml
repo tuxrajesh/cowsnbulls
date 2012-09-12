@@ -26,11 +26,7 @@
             android:label="@string/title_activity_gameplay" >
             
         </activity>
-        <activity
-            android:name=".Retry"
-            android:label="@string/title_activity_retry">
-            
-        </activity>
+        
     </application>
 
 </manifest>
