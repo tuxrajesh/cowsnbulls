@@ -5,16 +5,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
 
 public class GamePlay extends Activity {
 
@@ -25,8 +25,6 @@ public class GamePlay extends Activity {
 	private final String[] DICTIONARY = ALL_WORDS.split(" ");
 	
 	// UI Elements
-    private Button mGuessButton;
-    private Button mRetryButton;
     private ListView mGuessListView;
     private EditText mUserGuessEditText;
     
@@ -44,27 +42,8 @@ public class GamePlay extends Activity {
         setContentView(R.layout.gameplay);
         
         // Obtain handles to the UI objects
-        mGuessButton = (Button)findViewById(R.id.guessButton);
-        mRetryButton = (Button)findViewById(R.id.retryButton);
         mGuessListView = (ListView)findViewById(R.id.guessListView);
         mUserGuessEditText = (EditText)findViewById(R.id.userGuessEditText);
-        
-        // Register handlers for UI objects
-        mGuessButton.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				onGuessButtonClicked();
-			}
-		});
-        
-        mRetryButton.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				onRetryButtonClicked();
-			}
-		});
         
         String[] mFrom = { "cow", "cowcount", "bull", "bullcount", "guess" };
         int[] mTo = { R.id.cowImage, R.id.cowCountText, R.id.bullImage, R.id.bullCountText, R.id.guessText };
@@ -76,14 +55,31 @@ public class GamePlay extends Activity {
         initializeGame();
     }
 
-    protected void onRetryButtonClicked() {
-		Log.v(TAG, "Retry Button Clicked");
+    public void onGiveupButtonClick(View view) {
+		Log.v(TAG, "Giveup Button Clicked");
+		
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setMessage(String.format("The word is: %s", mGameWord))
+			   .setCancelable(false)
+			   .setNegativeButton("Retry", new DialogInterface.OnClickListener() {
+		           public void onClick(DialogInterface dialog, int id) {
+		                GamePlay.this.initializeGame();
+		           }
+			   })
+			   .setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
+		           public void onClick(DialogInterface dialog, int id) {
+		                GamePlay.this.finish();
+		           }
+			   });
+		
+		AlertDialog dialog = builder.create();
+		dialog.show();
 		
 		// Re-initialize Game
 		initializeGame();
 	}
 
-	protected void onGuessButtonClicked() {
+	public void onGuessButtonClick(View view) {
 		Log.v(TAG, "Activity State: Guess Button Clicked");
 		
 		// Continue Game
@@ -95,7 +91,23 @@ public class GamePlay extends Activity {
 			
 			// You have completed the game
 			if(guess.equalsIgnoreCase(mGameWord)){
-				Toast.makeText(getApplicationContext(), "You won!", Toast.LENGTH_LONG).show();
+				//setup dialog
+				AlertDialog.Builder builder = new AlertDialog.Builder(this);
+				builder.setMessage(String.format("You win. The word is: %s", mGameWord))
+					   .setCancelable(false)
+					   .setNegativeButton("Retry", new DialogInterface.OnClickListener() {
+				           public void onClick(DialogInterface dialog, int id) {
+				                GamePlay.this.initializeGame();
+				           }
+					   })
+					   .setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
+				           public void onClick(DialogInterface dialog, int id) {
+				                GamePlay.this.finish();
+				           }
+					   });
+				
+				AlertDialog dialog = builder.create();
+				dialog.show();
 			}
 			else {
 				for (int i = 0; i < guess.length(); i++){
@@ -122,8 +134,22 @@ public class GamePlay extends Activity {
 			mCurrentGuessCount++;
 		}
 		else {
-			// Start Game again.
-			Toast.makeText(getApplicationContext(), String.format("I win!. Word:%s", mGameWord), Toast.LENGTH_LONG).show();
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setMessage(String.format("You lost. The word is: %s", mGameWord))
+				   .setCancelable(false)
+				   .setNegativeButton("Retry", new DialogInterface.OnClickListener() {
+			           public void onClick(DialogInterface dialog, int id) {
+			                GamePlay.this.initializeGame();
+			           }
+				   })
+				   .setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
+			           public void onClick(DialogInterface dialog, int id) {
+			                GamePlay.this.finish();
+			           }
+				   });
+			
+			AlertDialog dialog = builder.create();
+			dialog.show();
 		}
 		
 		mUserGuessEditText.setText("");
@@ -145,10 +171,8 @@ public class GamePlay extends Activity {
     	if(isCharactersRepeated(gameWord)){
     		getGameWord();
     	}
-    	else {
-    		return gameWord;
-    	}
-    	return "COWS";
+    	
+    	return gameWord;
     }
     
     private boolean isCharactersRepeated(String word){

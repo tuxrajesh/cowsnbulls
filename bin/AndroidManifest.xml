@@ -23,7 +23,8 @@
         
         <activity
             android:name=".GamePlay"
-            android:label="@string/title_activity_gameplay" >
+            android:label="@string/title_activity_gameplay"
+            android:windowSoftInputMode="adjustResize" >
             
         </activity>
         

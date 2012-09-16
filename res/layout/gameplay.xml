@@ -23,16 +23,18 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dip"
             android:layout_marginRight="5dip"
-            android:text="@string/button_guess" />
+            android:text="@string/button_guess"
+            android:onClick="onGuessButtonClick" />
 
         <Button
-            android:id="@+id/retryButton"
+            android:id="@+id/giveUpButton"
             android:layout_width="145dip"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:layout_marginLeft="5dip"
             android:layout_marginRight="5dip"
-            android:text="@string/button_retry" />
+            android:text="@string/button_giveup"
+            android:onClick="onGiveupButtonClick" />
     </LinearLayout>
 
     <ListView

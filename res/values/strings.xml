@@ -3,6 +3,7 @@
     <string name="app_name">CowsAndBulls</string>
     <string name="button_guess">Guess</string>
     <string name="button_retry">Retry</string>
+    <string name="button_giveup">Give Up</string>
     <string name="button_newgame">New Game</string>
     <string name="button_instructions">Instructions</string>
     <string name="button_future">High Score</string>
