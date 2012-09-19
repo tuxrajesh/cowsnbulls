@@ -31,14 +31,16 @@
             android:layout_width="32dip"
             android:layout_height="32dip"
             android:onClick="onGuessButtonClick"
-            android:background="@drawable/guess" />
+            android:background="@drawable/guess"
+            android:layout_margin="5dip" />
         
         <Button
             android:id="@+id/retryButton"
             android:layout_width="32dip"
             android:layout_height="32dip"
             android:onClick="onGiveupButtonClick"
-            android:background="@drawable/giveup" />
+            android:background="@drawable/retry"
+            android:layout_margin="5dip" />
     </LinearLayout>
 
 </LinearLayout>
