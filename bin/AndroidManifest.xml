@@ -13,18 +13,15 @@
         android:theme="@style/AppTheme" >
         
         <activity
-            android:name=".Welcome"
-            android:label="@string/title_activity_welcome" >
+            android:name=".Game"
+            android:label="@string/title_activity_cowsnbulls"
+            android:windowSoftInputMode="adjustResize"
+            android:configChanges="orientation" >
+            
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        
-        <activity
-            android:name=".GamePlay"
-            android:label="@string/title_activity_gameplay"
-            android:windowSoftInputMode="adjustResize" >
             
         </activity>
         
