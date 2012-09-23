@@ -1,0 +1,11 @@
+COWS AND BULLS GAME:
+A game based on 4 letter words. 
+
+AIM:
+To find the word in the least possible guesses.
+
+GAME PLAY:
+The number of cows and bulls are determined based on the guess.
+A cow indicates a matching letter was found in the word, but the position is not correct.
+A bull indicates a matching letter that is in position.
+Goal of the game thus is to get 4 bulls.
